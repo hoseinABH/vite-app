@@ -25,6 +25,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
+      {JSON.stringify(Dastine, 2, 2)}
       {Dastine.isInstalled
         ? 'Dastime is Installed'
         : 'Dastine is not installed'}
