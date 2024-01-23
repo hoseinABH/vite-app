@@ -1,21 +1,50 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import GaugeComponent from 'react-gauge-component';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+      <GaugeComponent
+        value={50}
+        type="semicircle"
+        labels={{
+          tickLabels: {
+            type: 'outer',
+            ticks: [
+              { value: 20 },
+              {
+                value: 40,
+              },
+              { value: 60 },
+              { value: 80 },
+              { value: 100 },
+            ],
+          },
+        }}
+        arc={{
+          width: 0.2,
+          padding: 0.005,
+          cornerRadius: 1,
+          colorArray: ['#5BE12C', '#EA4228', 'gold', 'tomato'],
+          subArcs: [
+            { limit: 10, showTick: false },
+            { limit: 30, showTick: false },
+            { showTick: false },
+            { showTick: false },
+            { showTick: false },
+          ],
+        }}
+        pointer={{
+          elastic: true,
+          animationDelay: 0,
+          width: 10,
+          color: 'lime',
+          type: 'arrow',
+        }}
+      />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -25,10 +54,6 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      {JSON.stringify(Dastine, 2, 2)}
-      {Dastine.isInstalled
-        ? 'Dastime is Installed'
-        : 'Dastine is not installed'}
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
